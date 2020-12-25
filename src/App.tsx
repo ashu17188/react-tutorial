@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TodoListItem } from "./app/todo-list/TodoListItem";
 import { Counter } from "./features/counter/Counter";
-
+import "./App.scss";
 const initialTodos: Todo[] = [
   {
     text: "Walk the dog",
