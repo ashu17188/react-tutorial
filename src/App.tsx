@@ -1,41 +1,25 @@
-import React, { useState } from "react";
-import { TodoListItem } from "./app/todo-list/TodoListItem";
-import { Counter } from "./features/counter/Counter";
-import "./App.scss";
-const initialTodos: Todo[] = [
-  {
-    text: "Walk the dog",
-    complete: false,
-  },
-  {
-    text: "Write app",
-    complete: true,
-  },
-];
+import logo from "./logo.svg";
+import "./App.css";
 
-export default function App() {
-  const [todos, setTodos] = useState(initialTodos);
-
-  const toggleTodo = (selectedTodo: Todo) => {
-    const newTodos = todos.map((todo) => {
-      if (todo === selectedTodo) {
-        return {
-          ...todo,
-          complete: !todo.complete,
-        };
-      }
-      return todo;
-    });
-    setTodos(newTodos);
-  };
-
+const App = () => {
   return (
-    <div>
-      <Counter />
-      <ul>
-        <TodoListItem todo={todos[0]} toggleTodo={toggleTodo} />
-        <TodoListItem todo={todos[1]} toggleTodo={toggleTodo} />
-      </ul>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
-}
+};
+
+export default App;
