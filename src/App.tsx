@@ -8,12 +8,17 @@ const FirstName = createContext("");
 
 const App = () => {
   return (
-    <>
-      <div className="testSass">Test sass dependencies.</div>
-      <FirstName.Provider value={"Ashutosh"}>
-        <ComC />
-      </FirstName.Provider>
-    </>
+    <section className="app">
+      <div className="container">
+        <div className="inner">
+          <span>i</span>
+          <h1>Hey</h1>
+          <p>
+            This is informative card that will tell you something wonderful...
+          </p>
+        </div>
+      </div>
+    </section>
   );
 };
 
