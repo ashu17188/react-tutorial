@@ -1,12 +1,9 @@
 .app{
   background: #dcf5ef;
-  margin: 0;
   height: 100vh;
-  display: grid;
-  justify-items: center;
-  align-items: center;  
-
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 .inner {
   background: rgb(9, 201, 153);
