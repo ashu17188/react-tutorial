@@ -1,6 +1,6 @@
 import React from "react";
 import Signup from "./Components/Signup";
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./Components/Dashboard/Dashboard";
@@ -8,7 +8,8 @@ import Login from "./Components/Login";
 import PrivateRoute from "./Components/PrivateRoute";
 import ForgotPassword from "./Components/ForgotPassword";
 import UpdateProfile from "./Components/UpdateProfile";
-
+import CalculatorMain from "./Components/Calculator/CalculatorMain";
+import "./App.scss";
 function App() {
   return (
     <Container fluid="md">
@@ -23,6 +24,7 @@ function App() {
           </Switch>
         </AuthProvider>
       </Router>
+      <CalculatorMain />
     </Container>
   );
 }

@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Card,
-  Button,
-  Alert,
-  ListGroup,
-  Container,
-  Row,
-  Col,
-} from "react-bootstrap";
+import { Card, Button, Alert, ListGroup, Row, Col } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import { UserService } from "./UserService";
