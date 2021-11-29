@@ -4,6 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import { UserService } from "./UserService";
 import { User } from "./Model/User";
+import axios from "axios";
 
 export default function Dashboard() {
   const [error, setError] = useState("");
@@ -23,11 +24,15 @@ export default function Dashboard() {
 
   const [user, setUser] = useState({ name: "", email: "" });
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users/1")
-      .then((res) => res.json())
-      .then((data: User) => setUser({ name: data.name, email: data.email }));
+    loadUesrById(1);
   }, []);
 
+  const loadUesrById = async (id: number) => {
+    const res = await axios.get(
+      `https://jsonplaceholder.typicode.com/users/${id}`
+    );
+    setUser({ name: res.data.name, email: res.data.email });
+  };
   return (
     <>
       <Row>
