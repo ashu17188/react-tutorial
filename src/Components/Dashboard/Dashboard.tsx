@@ -5,12 +5,14 @@ import { Link, useHistory } from "react-router-dom";
 import { UserService } from "./UserService";
 import { User } from "./Model/User";
 import axios from "axios";
+import HeaderMain from "../header/HeaderMain";
+import ResetFormMain from "../Reset_form_with_default_values_and_clear_errors/ResetFormMain";
 
 export default function Dashboard() {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const history = useHistory();
-
+  const [loading, setLoading] = useState(false);
   async function handleLogout() {
     setError("");
 
@@ -28,13 +30,20 @@ export default function Dashboard() {
   }, []);
 
   const loadUesrById = async (id: number) => {
-    const res = await axios.get(
-      `https://jsonplaceholder.typicode.com/users/${id}`
-    );
-    setUser({ name: res.data.name, email: res.data.email });
+    try {
+      setLoading(true);
+      const res = await axios.get(
+        `https://jsonplaceholder.typicode.com/users/${id}`
+      );
+      setUser({ name: res.data.name, email: res.data.email });
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+    }
   };
   return (
     <>
+      <HeaderMain />
       <Row>
         <Col md={4}>
           <Card>
@@ -70,6 +79,9 @@ export default function Dashboard() {
             </Card.Body>
           </Card>
         </Col>
+      </Row>
+      <Row>
+        <ResetFormMain />
       </Row>
     </>
   );
