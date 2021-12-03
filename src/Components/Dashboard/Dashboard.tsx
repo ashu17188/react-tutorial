@@ -7,6 +7,7 @@ import { User } from "./Model/User";
 import axios from "axios";
 import HeaderMain from "../header/HeaderMain";
 import ResetFormMain from "../Reset_form_with_default_values_and_clear_errors/ResetFormMain";
+import StudentInfoMain from "../StudentInfo/StudentInfoMain";
 
 export default function Dashboard() {
   const [error, setError] = useState("");
@@ -81,7 +82,7 @@ export default function Dashboard() {
         </Col>
       </Row>
       <Row>
-        <ResetFormMain />
+        <StudentInfoMain />
       </Row>
     </>
   );
