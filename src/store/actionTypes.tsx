@@ -1,0 +1,2 @@
+export const UPDATE_NOTIFY = "UPDATE_NOTIFY";
+export const CLEAR_NOTIFY = "CLEAR_NOTIFY";

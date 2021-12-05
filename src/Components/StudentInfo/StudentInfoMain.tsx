@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { StoreContext } from "../../store";
+import UseNotifyHook from "../../hooks/UseNotifyHook";
 
 const StudentInfoMain = () => {
   const validationSchema = Yup.object().shape({
@@ -26,14 +28,41 @@ const StudentInfoMain = () => {
   const formOptions = { resolver: yupResolver(validationSchema) };
 
   // get functions to build form with useForm() hook
-  const { register, control, handleSubmit, reset, formState } =
+  const { register, control, handleSubmit, reset, formState, watch } =
     useForm(formOptions);
   const { errors } = formState;
   const { isSubmitting } = formState;
+  const { fields, append, remove } = useFieldArray({
+    name: "tickets",
+    control,
+  });
+
+  // watch to enable re-render when ticket number is changed
+  const numberOfTickets = watch("numberOfTickets");
+
+  useEffect(() => {
+    // update field array when ticket number changed
+    const newVal = parseInt(numberOfTickets || 0);
+    const oldVal = fields.length;
+    if (newVal > oldVal) {
+      // append tickets to field array
+      for (let i = oldVal; i < newVal; i++) {
+        append({ name: "", email: "" });
+      }
+    } else {
+      // remove tickets from field array
+      for (let i = oldVal; i > newVal; i--) {
+        remove(i - 1);
+      }
+    }
+  }, [numberOfTickets]);
+
+  const { notifyUser } = UseNotifyHook(StoreContext);
 
   function onSubmit(data: any) {
     // display form data on success
     alert("SUCCESS!! :-)\n\n" + JSON.stringify(data, null, 4));
+    notifyUser("Successful  message");
     return new Promise<Boolean>((resolve) => {
       setTimeout(() => {
         resolve(false);
@@ -150,6 +179,46 @@ const StudentInfoMain = () => {
               {errors.acceptTerms?.message}
             </div>
           </div>
+          {/* <div className="form-group">
+            <label>Number of Tickets</label>
+            <select
+              {...register("numberOfTickets")}
+              className={`form-control ${
+                errors.numberOfTickets ? "is-invalid" : ""
+              }`}
+            >
+              {["", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+                <option key={i} value={i}>
+                  {i}
+                </option>
+              ))}
+            </select>
+            {fields.map((item, i) => (
+              <div key={i} className="list-group list-group-flush">
+                <div className="list-group-item">
+                  <h5 className="card-title">Ticket {i + 1}</h5>
+                  <div className="form-row">
+                    <div className="form-group col-6">
+                      <label>Name</label>
+                      <input
+                        {...register(`tickets.${i}.name`)}
+                        type="text"
+                        className={`form-control ${
+                          errors.tickets?.[i]?.name ? "is-invalid" : ""
+                        }`}
+                      />
+                      <div className="invalid-feedback">
+                        {errors.tickets?.[i]?.name?.message}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div className="invalid-feedback">
+              {errors.numberOfTickets?.message}
+            </div>
+          </div> */}
           <div className="form-group">
             {/* <button type="submit" className="btn btn-primary mr-1">
               Register
