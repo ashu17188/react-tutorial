@@ -1,0 +1,72 @@
+// Typography
+.text-orange {
+  color: orange;
+}
+
+//
+#crypto-main {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(../../assets/images/crypto/background.png);
+  background-size: cover;
+  background-position: center;
+  padding: 0;
+  display: flex;
+  flex-flow: column wrap;
+}
+.btn-rounded {
+  border-radius: 15px !important;
+  width: 4rem !important;
+  height: 30px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+#crypto-content {
+  display: flex;
+  // flex-flow: row wrap;
+  flex-grow: 1;
+  align-items: center;
+  .content {
+    .content-left {
+      font-size: 4rem;
+      font-weight: bold;
+      .first-line {
+      }
+      .second-line {
+        .crypto {
+          color: orange;
+        }
+      }
+    }
+    .subcontent-left {
+      font-size: 11px;
+    }
+    .subcontent-link {
+      text-decoration: none;
+      font-size: 14px;
+      background-color: orange;
+      border-radius: 16px;
+    }
+  }
+  .crypto-data {
+    .coin-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid white;
+      border-radius: 10px;
+      .crypto-info-right {
+        margin-left: 10px;
+        .coin-value {
+          font-size: 12px;
+          font-weight: bold;
+        }
+        .coin-name {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
