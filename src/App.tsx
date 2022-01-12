@@ -12,6 +12,7 @@ import "./App.scss";
 import { reducer, INITIAL_STATE } from "./store/reducer";
 import { StoreContext } from "./store";
 import NotifyMain from "./Components/Notify/NotifyMain";
+import { Counter } from "./Components/counter/Counter";
 function App() {
   const [globalState, dispatch] = useReducer(reducer, INITIAL_STATE);
   return (
@@ -21,7 +22,7 @@ function App() {
           <Router>
             <AuthProvider>
               <Switch>
-                <PrivateRoute exact path="/" component={Dashboard} />
+                <PrivateRoute exact path="/" component={Counter} />
                 <PrivateRoute
                   path="/update-profile"
                   component={UpdateProfile}
