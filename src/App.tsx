@@ -3,7 +3,6 @@ import Signup from "./Components/Signup";
 import { Container } from "react-bootstrap";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Dashboard from "./Components/Dashboard/Dashboard";
 import Login from "./Components/Login";
 import PrivateRoute from "./Components/PrivateRoute";
 import ForgotPassword from "./Components/ForgotPassword";
