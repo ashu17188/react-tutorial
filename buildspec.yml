@@ -14,7 +14,7 @@ phases:
     commands:
       - echo Testing...
       - echo Building...
-      - npm run-script build
+      - npm run-script build --prod
 artifacts:
   files:
     - "**/*"
