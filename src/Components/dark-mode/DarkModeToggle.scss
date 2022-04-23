@@ -1,0 +1,33 @@
+.dark-mode-container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 20px;
+  z-index: 5;
+
+  .button {
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    background-color: var(--text);
+    border-radius: 50%;
+    border-bottom: 2px solid var(--logo);
+    display: flex;
+    .dark-fa-icon {
+      margin: auto;
+      font-size: 20px;
+      color: white;
+    }
+  }
+}
+#dark-mode-toggle {
+  display: none;
+}
+
+#dark-mode-toggle:checked + label {
+  .button {
+    .dark-fa-icon {
+      color: var(--logo);
+    }
+  }
+}

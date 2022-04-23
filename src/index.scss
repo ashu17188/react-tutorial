@@ -1,0 +1,65 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-icons/font/bootstrap-icons.scss";
+@font-face {
+  font-family: "RobotoRegular";
+  src: local("RobotoRegular"),
+    url("./fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+}
+@import "assets/css/variables.scss";
+
+// :root {
+//   scroll-behavior: smooth;
+// }
+
+// a {
+//   color: var(--color-links);
+//   text-decoration: none;
+
+//   &:hover {
+//     color: var(--color-links-hover);
+//     text-decoration: none;
+//   }
+// }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --logo: #6495ed;
+  background-image: radial-gradient(var(--logo) 0.1px, var(--label) 1.5px);
+  background-size: 20px 20px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+button {
+  &:focus,
+  &:active,
+  &:hover {
+    box-shadow: none !important;
+  }
+}
+
+body.light-mode {
+  --bg-color: #f4f4fb;
+  --bg-color-alt: white;
+  --text: #202124;
+  --text-alt: white;
+  --label: #dfdfec;
+  --error-svg: url(assets/img/icons/error-icon-light.svg);
+}
+
+body.dark-mode {
+  --bg-color: #303134;
+  --bg-color-alt: #202124;
+  --text: #f4f4fb;
+  --text-alt: #202124;
+  --label: #202124;
+  --error-svg: url(assets/img/icons/error-icon-dark.svg);
+}
